@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env) => {
   return {
@@ -13,6 +14,12 @@ module.exports = (env) => {
       path: path.resolve(__dirname, 'build'),
       // Очистка папки от старых бандлов
       clean: true,
-    }
+    },
+    // Плагины, которые расщиряют функционал webpack'а
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'public', 'index.html')
+      }),
+    ]
   }
 }
