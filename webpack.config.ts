@@ -1,7 +1,16 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = (env) => {
+import 'webpack-dev-server';
+
+type Mode = 'development' | 'production' | 'none'
+
+interface ConfigEnv {
+  mode: Mode
+}
+
+export default (env: ConfigEnv): webpack.Configuration => {
   return {
     // Режим сборки => 'development' | 'production' | 'none'
     mode: env.mode,
@@ -14,6 +23,10 @@ module.exports = (env) => {
       path: path.resolve(__dirname, 'build'),
       // Очистка папки от старых бандлов
       clean: true,
+    },
+
+    devServer: {
+      static: path.resolve(__dirname, 'build')
     },
 
     // Плагины, которые расщиряют функционал webpack'а
