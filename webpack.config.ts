@@ -2,18 +2,20 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-import 'webpack-dev-server';
+import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 
 type Mode = 'development' | 'production' | 'none'
 
 interface ConfigEnv {
-  mode: Mode
+  mode: Mode,
+  port: number
 }
 
 export default (env: ConfigEnv): webpack.Configuration => {
+
   return {
     // Режим сборки => 'development' | 'production' | 'none'
-    mode: env.mode,
+    mode: env.mode ?? 'development',
     entry: path.resolve(__dirname, 'src', 'index.ts'),
     output: {
       // Имя бандла, [contenthash] рассчитывается с учетом содержимое => меняется код - меняется имя сборки
@@ -26,7 +28,8 @@ export default (env: ConfigEnv): webpack.Configuration => {
     },
 
     devServer: {
-      static: path.resolve(__dirname, 'build')
+      open: true,
+      port: env.port ?? 3000,
     },
 
     // Плагины, которые расщиряют функционал webpack'а
