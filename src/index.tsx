@@ -1,8 +1,8 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { App } from './components/App';
 
-const appHtmlNode = document.getElementById('root');
+const root = document.getElementById('root');
 
-const appRoot = createRoot(appHtmlNode);
+const container = createRoot(root);
 
-appRoot.render(<h1>Webpack + React are working, yehoo!</h1>);
+container.render(<App />);
