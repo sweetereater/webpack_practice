@@ -16,7 +16,7 @@ export default (env: ConfigEnv): webpack.Configuration => {
   return {
     // Режим сборки => 'development' | 'production' | 'none'
     mode: env.mode ?? 'development',
-    entry: path.resolve(__dirname, 'src', 'index.ts'),
+    entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: {
       // Имя бандла, [contenthash] рассчитывается с учетом содержимое => меняется код - меняется имя сборки
       // [contenthash] используется для того, чтобы при изменениях в сборке - браузер брал данные
