@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Button } from '../Button';
+
 import './App.scss';
 
 function App() {
@@ -8,7 +10,9 @@ function App() {
 
   return <div className='counter'>
     Counter - {count}
-    <button className='button' onClick={increment}>Add</button>
+    <Button className='button' onClick={increment}>
+      Увеличить
+    </Button>
   </div>
 }
 

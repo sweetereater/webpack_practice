@@ -1,0 +1,12 @@
+.button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid lightseagreen;
+  color: inherit;
+  background-color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(165, 234, 231);
+  }
+}
