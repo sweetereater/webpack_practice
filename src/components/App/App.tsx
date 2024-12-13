@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import './App.css';
+
 function App() {
   const [count, setCount] = useState(0);
-  return <div>
+
+  const increment = () => setCount(prev => prev + 1);
+
+  return <div className='counter'>
     Counter - {count}
-    <button onClick={() => setCount(prev => prev + 5)}>Add</button>
+    <button className='button' onClick={increment}>Add</button>
   </div>
 }
 
