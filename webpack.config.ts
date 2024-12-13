@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 
@@ -12,6 +13,8 @@ interface ConfigEnv {
 }
 
 export default (env: ConfigEnv): webpack.Configuration => {
+
+  const isDev = env.mode === 'development';
 
   return {
     // Режим сборки => 'development' | 'production' | 'none'
@@ -37,6 +40,7 @@ export default (env: ConfigEnv): webpack.Configuration => {
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'public', 'index.html')
       }),
+      new MiniCssExtractPlugin(),
     ],
 
     // Лоадеры нужны для обработки не .js файлов (Webpack изначально понимает только .js)
@@ -51,7 +55,7 @@ export default (env: ConfigEnv): webpack.Configuration => {
           test: /\.s[ac]ss$/i,
           use: [
             // Creates `style` nodes from JS strings
-            "style-loader",
+            isDev ? MiniCssExtractPlugin.loader : "style-loader",
             // Translates CSS into CommonJS
             "css-loader",
             // Compiles Sass to CSS
