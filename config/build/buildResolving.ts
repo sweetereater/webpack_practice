@@ -1,6 +1,6 @@
-import webpack from 'webpack';
+import { Configuration } from 'webpack';
 
-function buildResolving(): webpack.ResolveOptions {
+function buildResolving(): Configuration['resolve'] {
   return {
     extensions: ['.tsx', '.ts', '.js'],
   }

@@ -1,8 +1,8 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BuildOptions } from "./buildWebpackConfig";
-import { RuleSetRule } from "webpack";
+import { ModuleOptions } from "webpack";
 
-function buildLoaders(options: BuildOptions): RuleSetRule[] {
+function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
   
   const tsxLoader = {
     test: /\.tsx?$/,
