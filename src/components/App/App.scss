@@ -14,4 +14,8 @@
   color: inherit;
   background-color: white;
   cursor: pointer;
+
+  &:hover {
+    background-color: rgb(165, 234, 231);
+  }
 }
