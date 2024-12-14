@@ -9,10 +9,12 @@ interface ConfigEnv {
 }
 
 export default (env: ConfigEnv): webpack.Configuration => {
-  const isDev = env.mode === 'development';
+  const mode = env.mode ?? 'development';
+  const isDev = mode === 'development';
+
   return buildWebpackConfig({
     isDev,
-    mode: env.mode ?? 'development',
+    mode,
     port: 3000,
     paths: {
       html: path.resolve(__dirname, 'public', 'index.html'),
