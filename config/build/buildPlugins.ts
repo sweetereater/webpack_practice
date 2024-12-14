@@ -5,16 +5,30 @@ import { BuildOptions } from "./buildWebpackConfig";
 
 function buildPlugins(options: BuildOptions): Configuration['plugins'] {
   const { isDev, paths} = options;
-  
-  return [
+
+  // Общие плагины
+  const plugins: Configuration['plugins'] = [
     new HtmlWebpackPlugin({
       template: paths.html
-    }),
-    !isDev && new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css',
-    }),
+    })
   ]
+
+  // Плагины только для разработки
+  if(isDev) {
+
+  }
+
+  // Плагины для прода
+  if (!isDev) {
+    plugins.push(
+      !isDev && new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[name].[contenthash:8].css',
+      })
+    )
+  }
+  
+  return plugins
 }
 
 export default buildPlugins;
