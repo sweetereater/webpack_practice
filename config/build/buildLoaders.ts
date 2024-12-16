@@ -40,9 +40,15 @@ function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     ],
   }
 
+  const imagesLoader = {
+    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+    type: 'asset/resource',
+  }
+
   return [
     tsxLoader,
-    cssLoader
+    cssLoader,
+    imagesLoader,
   ]
 }
 

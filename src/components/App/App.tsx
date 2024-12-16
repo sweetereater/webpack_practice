@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Button } from '@components/Button';
 
+// в переменных будут пути
+import froggySwing from '@assets/froggy_on_swing.png';
+import froggyAndTea from '@assets/froggy_and_tea.jpg';
+
 import styles from  './App.module.scss';
 
 function App() {
@@ -19,6 +23,11 @@ function App() {
       </Link>
     </div>
     
+    <div className="images">
+      <img width={200} height={200} src={froggySwing} alt="Лягуха на качельке" />
+      <img width={200} height={200} src={froggyAndTea} alt="Лягуха и чаёк" />
+    </div>
+
     <Button className='button' onClick={increment}>
       Увеличить значение счётчика {count}
     </Button>

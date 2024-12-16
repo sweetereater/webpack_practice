@@ -12,6 +12,7 @@
     // baseUrl and paths used for aliasing (using just @components instead of ../../..)
     "baseUrl": ".",
     "paths": {
+      "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@pages/*": ["./src/pages/*"]
     }
