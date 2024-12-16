@@ -1,6 +1,9 @@
 import { createRoot } from 'react-dom/client';
 import { App } from './components/App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { About } from './pages/AboutPage';
+import { Suspense } from 'react';
+import { Info } from './pages/InfoPage';
 
 const root = document.getElementById('root');
 
@@ -14,11 +17,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/about",
-        element: <h1>About page</h1>,
+        element: <Suspense fallback="Загрузка...">
+          <About />
+        </Suspense>,
       },
       {
         path: "/info",
-        element: <h1>Info page</h1>,
+        element: <Suspense fallback="Загрузка...">
+          <Info />
+        </Suspense>,
       },
     ],
   },

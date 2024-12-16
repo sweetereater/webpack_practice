@@ -1,8 +1,15 @@
-.counter {
+.container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 1rem;
-  margin: 1rem;
+  margin: 1rem auto;
+  width: 1200px;
+  color: rgb(34, 74, 119);
+  background-color: lightblue;
+}
 
-  color: lightseagreen;
+.navigation {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem;
 }
