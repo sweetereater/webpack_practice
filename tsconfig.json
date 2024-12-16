@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    // baseUrl and paths used for aliasing (using just @components instead of ../../..)
     "baseUrl": ".",
     "paths": {
       "@components/*": ["./src/components/*"],
