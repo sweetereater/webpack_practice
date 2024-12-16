@@ -41,14 +41,27 @@ function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
   }
 
   const imagesLoader = {
-    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+    test: /\.(png|jpg|jpeg|gif)$/i,
     type: 'asset/resource',
+  }
+
+  const svgLoader = {
+    test: /\.svg$/,
+    use: [
+      {
+        loader: '@svgr/webpack',
+        options: {
+          icon: true
+        }
+      }
+    ],
   }
 
   return [
     tsxLoader,
     cssLoader,
     imagesLoader,
+    svgLoader,
   ]
 }
 
