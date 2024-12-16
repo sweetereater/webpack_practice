@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { Button } from '../Button';
+import { Button } from '@components/Button';
 
 import styles from  './App.module.scss';
 

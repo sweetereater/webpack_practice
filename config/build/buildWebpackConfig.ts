@@ -43,7 +43,7 @@ function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
       rules: buildLoaders(options)
     },
 
-    resolve: buildResolving(),
+    resolve: buildResolving(options),
 
   }
 }
