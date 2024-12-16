@@ -16,7 +16,8 @@ export interface BuildOptions {
     html: string,
     output: string,
     src: string,
-  }
+  },
+  useWebpackBundleAnalyzer: boolean
 }
 
 
@@ -31,7 +32,7 @@ function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
     output: {
       clean: true,
       path: paths.output,
-      filename: '[bundle].[contenthash:8].js',
+      filename: 'bundle.[contenthash:8].js',
     },
 
     devServer: buildDevServer(options),
