@@ -5,6 +5,8 @@ import { Button } from '@components/Button';
 // в переменных будут пути
 import froggySwing from '@assets/froggy_on_swing.png';
 import froggyAndTea from '@assets/froggy_and_tea.jpg';
+
+// Переменную можно будет использовать как React компонент
 import KittySVG from '@assets/kitty.svg';
 
 import styles from  './App.module.scss';
@@ -30,6 +32,9 @@ function App() {
       <img width={200} height={200} src={froggyAndTea} alt="Лягуха и чаёк" />
     </div>
 
+    {/* Используем переменную, которая была объявлена с помощью webpack.DefinePlugin */}
+    <h1>Используемая платформа - {__PLATFORM__}</h1>
+    
     <Button className='button' onClick={increment}>
       Увеличить значение счётчика {count}
     </Button>

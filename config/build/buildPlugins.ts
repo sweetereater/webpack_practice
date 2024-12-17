@@ -1,4 +1,4 @@
-import { Configuration } from "webpack";
+import { Configuration, DefinePlugin } from "webpack";
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
@@ -6,12 +6,15 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BuildOptions } from "./buildWebpackConfig";
 
 function buildPlugins(options: BuildOptions): Configuration['plugins'] {
-  const { isDev, paths, useWebpackBundleAnalyzer } = options;
+  const { isDev, paths, platform, useWebpackBundleAnalyzer } = options;
 
   // Общие плагины
   const plugins: Configuration['plugins'] = [
     new HtmlWebpackPlugin({
       template: paths.html
+    }),
+    new DefinePlugin({
+      __PLATFORM__: JSON.stringify(platform)
     })
   ]
 

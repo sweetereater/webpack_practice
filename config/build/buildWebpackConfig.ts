@@ -6,6 +6,7 @@ import buildDevServer from './buildDevServer';
 import buildResolving from './buildResolving';
 
 export type Mode = 'development' | 'production' | 'none';
+export type Platform = 'desktop' | 'mobile';
 
 export interface BuildOptions {
   isDev: boolean,
@@ -17,12 +18,13 @@ export interface BuildOptions {
     output: string,
     src: string,
   },
+  platform: Platform,
   useWebpackBundleAnalyzer: boolean
 }
 
 
 function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
-  const { isDev, mode, port, paths } = options;
+  const { mode, paths } = options;
 
   return {
     mode,
