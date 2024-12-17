@@ -3,6 +3,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 import { BuildOptions } from "./buildWebpackConfig";
 
@@ -23,6 +24,9 @@ function buildPlugins(options: BuildOptions): Configuration['plugins'] {
   if(isDev) {
     plugins.push(
       new ForkTsCheckerPlugin()
+    )
+    plugins.push(
+      new ReactRefreshWebpackPlugin()
     )
   }
 
