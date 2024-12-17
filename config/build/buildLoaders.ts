@@ -1,15 +1,22 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BuildOptions } from "./buildWebpackConfig";
-import { ModuleOptions } from "webpack";
-import path from "path";
+import { ModuleOptions, RuleSetRule } from "webpack";
+
 
 function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 
   const { isDev, paths } = options;
   
-  const tsxLoader = {
+  const tsxLoader: RuleSetRule = {
     test: /\.tsx?$/,
-    use: 'ts-loader',
+    use: [
+      {
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+        }
+      }
+    ],
     exclude: /node_modules/,
   }
 

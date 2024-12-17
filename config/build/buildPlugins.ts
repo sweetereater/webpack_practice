@@ -1,5 +1,6 @@
 import { Configuration, DefinePlugin } from "webpack";
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
@@ -20,6 +21,9 @@ function buildPlugins(options: BuildOptions): Configuration['plugins'] {
 
   // Плагины только для разработки
   if(isDev) {
+    plugins.push(
+      new ForkTsCheckerPlugin()
+    )
   }
 
   // Плагины для прода
