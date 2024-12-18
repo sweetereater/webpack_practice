@@ -16,6 +16,7 @@ export interface BuildOptions {
     entry: string,
     html: string,
     output: string,
+    public: string,
     src: string,
   },
   platform: Platform,

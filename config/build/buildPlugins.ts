@@ -1,3 +1,4 @@
+import path from "path";
 import { Configuration, DefinePlugin } from "webpack";
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
@@ -13,6 +14,7 @@ function buildPlugins(options: BuildOptions): Configuration['plugins'] {
   // Общие плагины
   const plugins: Configuration['plugins'] = [
     new HtmlWebpackPlugin({
+      favicon: path.resolve(paths.public, 'icon.ico'),
       template: paths.html
     }),
     new DefinePlugin({
