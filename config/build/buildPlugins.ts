@@ -1,5 +1,6 @@
 import path from "path";
 import { Configuration, DefinePlugin } from "webpack";
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from "html-webpack-plugin";
@@ -38,6 +39,13 @@ function buildPlugins(options: BuildOptions): Configuration['plugins'] {
       !isDev && new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash:8].css',
         chunkFilename: 'css/[name].[contenthash:8].css',
+      })
+    )
+    plugins.push(
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: path.resolve(paths.public, 'locales'), to: path.resolve(paths.output, 'locales') },
+        ],
       })
     )
   }
